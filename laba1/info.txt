@@ -1,0 +1,3 @@
+тут лаба состоит в том что бы в браузере по нажатию по кнопке мы меняли состояние лампочки
+
+https://iotdesignpro.com/projects/esp8266-based-webserver-to-control-led-from-webpage
