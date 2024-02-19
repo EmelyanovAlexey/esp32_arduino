@@ -2,11 +2,12 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
 #include <Arduino_JSON.h>
+// готовый вариант общения плат друг с другом по нопке в самой плате
 
 const char* ssid = "RT-GPON-004B";
 const char* password = "nXJGH4V5";
-const char* serverAddress = "http://192.168.0.66"; // IP адрес удаленной платы
-// const char* serverAddress = "http://192.168.0.67"; // IP адрес удаленной платы
+const char* serverAddress = "http://192.168.0.66"; // IP адрес удаленной платы 1
+// const char* serverAddress = "http://192.168.0.67"; // IP адрес удаленной платы 2
 const int buttonPin = 0; // Номер пина, к которому подключена кнопка (GPIO0)
 const int ledPin = 2; 
 
