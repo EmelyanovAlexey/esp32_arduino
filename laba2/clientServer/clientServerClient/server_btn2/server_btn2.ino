@@ -6,13 +6,15 @@
 const char* ssid = "RT-GPON-004B";
 const char* password = "nXJGH4V5";
 const char* serverAddress = "http://192.168.0.66"; // IP адрес удаленной платы
-const char* serverAddress = "http://192.168.0.67"; // IP адрес удаленной платы
+// const char* serverAddress = "http://192.168.0.67"; // IP адрес удаленной платы
 const int buttonPin = 0; // Номер пина, к которому подключена кнопка (GPIO0)
+const int ledPin = 2; 
 
 WiFiServer server(80);
 
 void setup() {
   pinMode(buttonPin, INPUT);
+  pinMode(ledPin, OUTPUT);
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
