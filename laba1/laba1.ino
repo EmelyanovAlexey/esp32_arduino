@@ -4,24 +4,24 @@
 // const char* password = "Ae97980525";
 const char* ssid = "RT-GPON-004B";
 const char* password = "nXJGH4V5";
-int LED = 2;   // led connected to GPIO2 (D4)
+int LED = 2;   // Светодиод подключен к GPIO2 (D4).
 
-WiFiServer server(80);
+WiFiServer server(80); // Создание сервера на порту 80 для обработки запросов.
 
 void setup()
 {
-  Serial.begin(115200); //Default Baudrate
-  pinMode(LED, OUTPUT);
-  digitalWrite(LED, LOW);
+  Serial.begin(115200); // Инициализация последовательной связи с скоростью 115200 бит/с.
+  pinMode(LED, OUTPUT); // Установка пина светодиода на вывод.
+  digitalWrite(LED, LOW); // Изначально выключаем светодиод.
   Serial.print("Connecting to the Newtork");
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED)
+  WiFi.begin(ssid, password); // Подключение к Wi-Fi сети.
+  while (WiFi.status() != WL_CONNECTED) // Ждем, пока ESP8266 не подключится к сети.
   {
     delay(500);
     Serial.print(".");
   }
   Serial.println("WiFi connected"); 
-  server.begin();  // Starts the Server
+  server.begin();  // Запуск HTTP сервера.
   Serial.println("Server started");
   Serial.print("IP Address of network: "); // will IP address on Serial Monitor
   Serial.println(WiFi.localIP());
@@ -32,20 +32,20 @@ void setup()
 
 void loop()
 {
-  WiFiClient client = server.available();
-  if (!client)
+  WiFiClient client = server.available(); // Проверка наличия клиентского подключения.
+  if (!client) // Если клиент не подключен, выходим из функции loop.
   {
     return;
   }
   Serial.println("Waiting for new client");
-  while(!client.available())
+  while(!client.available()) // Пока нет доступных данных от клиента, ждем.
   {
     delay(1);
   }
 
-  String request = client.readStringUntil('\r');
-  Serial.println(request);
-  client.flush();
+  String request = client.readStringUntil('\r'); // Чтение запроса от клиента до символа возврата каретки.
+  Serial.println(request); // Вывод полученного запроса.
+  client.flush(); // Очистка буфера клиента.
 
   int value = LOW;
 
